@@ -123,3 +123,44 @@
     @apply bg-background text-foreground;
   }
 }
+
+/* Tabular app design tokens */
+.tabular {
+  --paper: #f5f2ea;
+  --ink: #0038a8;
+  --ink-dim: #4b6cb7;
+  --border-thick: 3px solid var(--ink);
+  --border-thin: 1.5px solid var(--ink);
+  --radius-sm: 0px;
+  --radius-md: 4px;
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+}
+
+.tabular,
+.tabular body {
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-mono), monospace;
+  -webkit-font-smoothing: antialiased;
+}
+
+.tabular ::-webkit-scrollbar {
+  width: 12px;
+}
+
+.tabular ::-webkit-scrollbar-track {
+  background: var(--paper);
+  border-left: var(--border-thin);
+}
+
+.tabular ::-webkit-scrollbar-thumb {
+  background: var(--ink);
+  border: 2px solid var(--paper);
+}
+
+.tabular .font-dela {
+  font-family: var(--font-dela), cursive;
+}
