@@ -26,7 +26,7 @@ export function Header() {
         <div className="relative h-8 w-8 rounded-full border-[length:3px] border-[var(--ink)] bg-[var(--ink)]">
           <div className="absolute top-1/2 left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full bg-[var(--paper)]" />
         </div>
-        <span>Tabular</span>
+        <span>Tabularis</span>
       </div>
       <div className="flex items-center gap-[var(--space-md)] text-sm font-bold tracking-wider uppercase">
         <span className="uppercase" style={{ fontFamily: "var(--font-dela), cursive" }}>

@@ -16,7 +16,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Tabular - Extract tables from PDF",
+  title: "Tabularis - Extract tables from PDF",
   description: "Extract tables automatically. Turn fixed documents into editable data.",
 };
 

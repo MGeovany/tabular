@@ -96,15 +96,9 @@ export function UploadZone() {
       <span className={cornerStyle} style={{ top: "10px", right: "15px" }}>
         XLS
       </span>
-      <span className={cornerStyle} style={{ bottom: "10px", left: "15px" }}>
-        IN
-      </span>
-      <span className={cornerStyle} style={{ bottom: "10px", right: "15px" }}>
-        OUT
-      </span>
 
       <div
-        className="z-[2] max-w-[400px] text-center"
+        className="z-[2] mb-2 mb-8 max-w-[400px] text-center"
         style={{ fontFamily: "var(--font-mono), monospace" }}
       >
         <span
