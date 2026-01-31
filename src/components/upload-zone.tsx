@@ -40,42 +40,15 @@ export function UploadZone() {
     }
   };
 
-  const zoneStyle = {
-    display: "flex",
-    flexDirection: "column" as const,
-    alignItems: "center",
-    justifyContent: "center",
-    minHeight: "300px",
-    border: "var(--border-thick)",
-    position: "relative" as const,
-    transition: "all 0.3s ease",
-    backgroundColor: "var(--paper)",
-    overflow: "hidden" as const,
-    backgroundImage: "radial-gradient(var(--ink) 15%, transparent 15%)",
-    backgroundPosition: "0 0",
-    backgroundSize: "6px 6px",
-    opacity: isHovered || isDragging ? 1 : 0.95,
-    transform: isHovered || isDragging ? "translate(-2px, -2px)" : "translate(0, 0)",
-    boxShadow: isHovered || isDragging ? "4px 4px 0 var(--ink)" : "none",
-  };
-
-  const cornerStyle =
-    "absolute text-2xl font-bold leading-none [font-family:var(--font-dela),cursive]";
-
-  const graphicLinesStyle = {
-    position: "absolute" as const,
-    bottom: 0,
-    right: 0,
-    width: "100%",
-    height: "20px",
-    background:
-      "repeating-linear-gradient(45deg, var(--ink), var(--ink) 2px, var(--paper) 2px, var(--paper) 6px)",
-    borderTop: "var(--border-thick)",
-  };
+  const active = isHovered || isDragging;
 
   return (
     <section
-      style={zoneStyle}
+      className={`border-ink bg-paper relative flex min-h-[300px] flex-col items-center justify-center overflow-hidden border-[3px] [background-image:radial-gradient(var(--ink)_15%,transparent_15%)] [background-size:6px_6px] [background-position:0_0] transition-all duration-300 ${
+        active
+          ? "-translate-x-0.5 -translate-y-0.5 opacity-100 shadow-[4px_4px_0_var(--ink)]"
+          : "translate-x-0 translate-y-0 opacity-95 shadow-none"
+      }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onDragOver={handleDragOver}
@@ -90,29 +63,16 @@ export function UploadZone() {
         onChange={handleFileChange}
       />
 
-      <span className={cornerStyle} style={{ top: "10px", left: "15px" }}>
+      <span className="font-dela absolute top-[10px] left-[15px] text-2xl leading-none font-bold">
         PDF
       </span>
-      <span className={cornerStyle} style={{ top: "10px", right: "15px" }}>
+      <span className="font-dela absolute top-[10px] right-[15px] text-2xl leading-none font-bold">
         XLS
       </span>
 
-      <div
-        className="z-[2] mb-2 mb-8 max-w-[400px] text-center"
-        style={{ fontFamily: "var(--font-mono), monospace" }}
-      >
-        <span
-          className="mb-[var(--space-sm)] block text-6xl"
-          style={{ fontFamily: "var(--font-dela), cursive" }}
-        >
-          ⬇
-        </span>
-        <h1
-          className="mb-[var(--space-xs)] text-2xl uppercase"
-          style={{ fontFamily: "var(--font-dela), cursive" }}
-        >
-          {t("upload.title")}
-        </h1>
+      <div className="z-[2] mb-2 mb-8 max-w-[400px] text-center font-mono">
+        <span className="font-dela mb-[var(--space-sm)] block text-6xl">⬇</span>
+        <h1 className="font-dela mb-[var(--space-xs)] text-2xl uppercase">{t("upload.title")}</h1>
         <p className="mb-[var(--space-md)] text-[0.9rem] leading-[1.5]">
           {t("upload.subtitle1")}
           <br />
@@ -121,7 +81,7 @@ export function UploadZone() {
         <Button onClick={handleFileSelect}>{t("upload.selectFile")}</Button>
       </div>
 
-      <div style={graphicLinesStyle} />
+      <div className="border-ink absolute right-0 bottom-0 h-5 w-full border-t-[3px] [background:repeating-linear-gradient(45deg,var(--ink),var(--ink)_2px,var(--paper)_2px,var(--paper)_6px)]" />
     </section>
   );
 }

@@ -9,19 +9,12 @@ export default function AccountPage() {
   return (
     <div className="mt-auto flex flex-1 flex-col gap-[var(--space-md)]">
       <HeroAccount />
-      <div className="grid gap-[var(--space-md)]" style={{ gridTemplateColumns: "1.5fr 1fr" }}>
+      <div className="grid grid-cols-[1.5fr_1fr] gap-[var(--space-md)]">
         <UsageCard />
         <TeamCard />
         <BillingHistoryCard />
       </div>
-      <div
-        className="mt-auto h-5"
-        style={{
-          background:
-            "repeating-linear-gradient(45deg, var(--ink), var(--ink) 2px, var(--paper) 2px, var(--paper) 6px)",
-          borderTop: "var(--border-thick)",
-        }}
-      />
+      <div className="border-ink mt-auto h-5 border-t-[3px] [background:repeating-linear-gradient(45deg,var(--ink),var(--ink)_2px,var(--paper)_2px,var(--paper)_6px)]" />
     </div>
   );
 }

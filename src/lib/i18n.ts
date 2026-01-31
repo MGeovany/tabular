@@ -40,9 +40,9 @@ export const translations = {
       },
       usage: {
         title: "API Usage (Monthly)",
-        calls: "6,500 / 10,000 Calls",
-        cycleResets: "* Cycle resets in 12 days.",
-        peakReached: "Peak reached: October 14.",
+        calls: "Calls",
+        cycleResets: "* Cycle resets monthly.",
+        peakReached: "",
       },
       team: {
         title: "Team",
@@ -100,9 +100,9 @@ export const translations = {
       },
       usage: {
         title: "Consumo API (Mensual)",
-        calls: "6.500 / 10.000 Llamadas",
-        cycleResets: "* El ciclo se reinicia en 12 días.",
-        peakReached: "Pico máximo: 14 de Octubre.",
+        calls: "Llamadas",
+        cycleResets: "* El ciclo se reinicia cada mes.",
+        peakReached: "",
       },
       team: {
         title: "Equipo",

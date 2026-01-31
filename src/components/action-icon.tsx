@@ -12,8 +12,7 @@ export function ActionIcon({ children, onClick }: ActionIconProps) {
 
   return (
     <span
-      className="cursor-pointer text-right font-bold"
-      style={{ textDecoration: isHovered ? "underline" : "none" }}
+      className={`cursor-pointer text-right font-bold ${isHovered ? "underline" : "no-underline"}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}

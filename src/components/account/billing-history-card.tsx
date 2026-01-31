@@ -2,59 +2,50 @@
 
 import { useLanguage } from "@/contexts/language-context";
 
-const BILLING_DATA = [
-  { date: "OCT 01 2024", ref: "INV-00982", amount: "$29.00 USD" },
-  { date: "SEP 01 2024", ref: "INV-00871", amount: "$29.00 USD" },
-  { date: "AUG 01 2024", ref: "INV-00754", amount: "$29.00 USD" },
-];
-
 export function BillingHistoryCard() {
   const { t } = useLanguage();
+  const items: { date: string; ref: string; amount: string }[] = [];
+
   const handleDownloadPDF = (ref: string) => {
-    console.log(`Download receipt ${ref}`);
+    // TODO: download receipt
+    void ref;
   };
 
   return (
-    <div
-      className="col-span-full flex flex-col"
-      style={{
-        border: "var(--border-thick)",
-        background: "var(--paper)",
-      }}
-    >
-      <div
-        className="border-b-[length:3px] border-b-[var(--ink)] bg-[var(--ink)] p-[var(--space-sm)] text-[var(--paper)] uppercase"
-        style={{ fontFamily: "var(--font-dela), cursive" }}
-      >
+    <div className="border-ink bg-paper col-span-full flex flex-col border-[3px]">
+      <div className="font-dela border-ink bg-ink text-paper border-b-[3px] p-[var(--space-sm)] uppercase">
         {t("account.billing.title")}
       </div>
       <div className="p-[var(--space-sm)]">
-        <div className="flex justify-between border-b-[length:3px] border-b-[var(--ink)] py-2 font-bold">
-          <span>{t("account.billing.date")}</span>
-          <span>{t("account.billing.reference")}</span>
-          <span>{t("account.billing.amount")}</span>
-          <span>{t("account.billing.receipt")}</span>
-        </div>
-        {BILLING_DATA.map((item, index) => (
-          <div
-            key={item.ref}
-            className="flex justify-between py-2"
-            style={{
-              borderBottom: index < BILLING_DATA.length - 1 ? "var(--border-thin)" : "none",
-            }}
-          >
-            <span>{item.date}</span>
-            <span>{item.ref}</span>
-            <span>{item.amount}</span>
-            <button
-              type="button"
-              className="cursor-pointer underline"
-              onClick={() => handleDownloadPDF(item.ref)}
-            >
-              PDF
-            </button>
-          </div>
-        ))}
+        {items.length === 0 ? (
+          <p className="py-4 text-sm opacity-80">No billing history yet.</p>
+        ) : (
+          <>
+            <div className="border-ink flex justify-between border-b-[3px] py-2 font-bold">
+              <span>{t("account.billing.date")}</span>
+              <span>{t("account.billing.reference")}</span>
+              <span>{t("account.billing.amount")}</span>
+              <span>{t("account.billing.receipt")}</span>
+            </div>
+            {items.map((item, index) => (
+              <div
+                key={item.ref}
+                className={`flex justify-between py-2 ${index < items.length - 1 ? "border-ink border-b border-b-[1.5px]" : ""}`}
+              >
+                <span>{item.date}</span>
+                <span>{item.ref}</span>
+                <span>{item.amount}</span>
+                <button
+                  type="button"
+                  className="cursor-pointer underline"
+                  onClick={() => handleDownloadPDF(item.ref)}
+                >
+                  PDF
+                </button>
+              </div>
+            ))}
+          </>
+        )}
       </div>
     </div>
   );

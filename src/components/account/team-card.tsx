@@ -1,56 +1,39 @@
 "use client";
 
-import { useState } from "react";
 import { useLanguage } from "@/contexts/language-context";
 import { Button } from "../button";
 
-const INITIAL_MEMBERS = [
-  { initials: "AM", name: "A. MARTIN" },
-  { initials: "SR", name: "S. RUIZ" },
-];
-
 export function TeamCard() {
   const { t } = useLanguage();
-  const [members] = useState(INITIAL_MEMBERS);
+  const members: { initials: string; name: string }[] = [];
 
   const handleAddMember = () => {
-    console.log("Add member");
+    // TODO: invite flow
   };
 
   return (
-    <div
-      className="flex flex-col"
-      style={{
-        border: "var(--border-thick)",
-        background: "var(--paper)",
-      }}
-    >
-      <div
-        className="border-b-[length:3px] border-b-[var(--ink)] bg-[var(--ink)] p-[var(--space-sm)] text-[var(--paper)] uppercase"
-        style={{ fontFamily: "var(--font-dela), cursive" }}
-      >
+    <div className="border-ink bg-paper flex flex-col border-[3px]">
+      <div className="font-dela border-ink bg-ink text-paper border-b-[3px] p-[var(--space-sm)] uppercase">
         {t("account.team.title")}
       </div>
       <div className="p-[var(--space-sm)]">
-        <div className="grid gap-[var(--space-sm)]" style={{ gridTemplateColumns: "1fr 1fr" }}>
-          {members.map((member, index) => (
-            <div
-              key={index}
-              className="border border-[var(--ink)] p-[var(--space-sm)] text-center"
-              style={{ borderWidth: "1.5px" }}
-            >
+        {members.length === 0 ? (
+          <p className="mb-4 text-sm opacity-80">No team members yet.</p>
+        ) : (
+          <div className="mb-4 grid grid-cols-2 gap-[var(--space-sm)]">
+            {members.map((member, index) => (
               <div
-                className="mx-auto mb-2 flex h-10 w-10 items-center justify-center font-bold"
-                style={{
-                  border: "1.5px solid var(--ink)",
-                }}
+                key={index}
+                className="border-ink border-[1.5px] p-[var(--space-sm)] text-center"
               >
-                {member.initials}
+                <div className="border-ink mx-auto mb-2 flex h-10 w-10 items-center justify-center border-[1.5px] font-bold">
+                  {member.initials}
+                </div>
+                <div className="text-[0.7rem] font-bold">{member.name}</div>
               </div>
-              <div className="text-[0.7rem] font-bold">{member.name}</div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
         <Button onClick={handleAddMember}>{t("account.team.addMember")}</Button>
       </div>
     </div>
