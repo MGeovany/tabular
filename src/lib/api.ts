@@ -4,7 +4,9 @@
 
 import axios from "axios";
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+// Default to same-origin and rely on Next.js `rewrites()` to proxy `/api/*` to tabularis-server.
+// If you want to call the backend directly from the browser, set NEXT_PUBLIC_API_URL.
+const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
 
 export type UserMe = {
   id: string;
@@ -41,7 +43,29 @@ export async function fetchMe(accessToken: string): Promise<UserMe> {
 
 export async function fetchHistory(accessToken: string): Promise<ConversionItem[]> {
   const { data } = await client(accessToken).get<ConversionItem[] | { items: ConversionItem[] }>(
-    "/api/v1/history"
+    "/api/v1/history",
   );
-  return Array.isArray(data) ? data : data.items ?? [];
+  return Array.isArray(data) ? data : (data.items ?? []);
+}
+
+const PDF_TYPE = "application/pdf";
+
+export function isPdfFile(file: File): boolean {
+  return file.type === PDF_TYPE || file.name.toLowerCase().endsWith(".pdf");
+}
+
+export type ConvertResult = { blob: Blob; filename: string };
+
+export async function convertPdfToExcel(accessToken: string, file: File): Promise<ConvertResult> {
+  const formData = new FormData();
+  formData.append("file", file);
+  const res = await client(accessToken).post("/api/v1/convert/pdf-to-excel", formData, {
+    responseType: "blob",
+  });
+  const blob = res.data as Blob;
+  const disposition = res.headers["content-disposition"];
+  const filename =
+    (typeof disposition === "string" && /filename="?([^";\n]+)"?/i.exec(disposition)?.[1]) ||
+    file.name.replace(/\.pdf$/i, "") + ".xlsx";
+  return { blob, filename };
 }

@@ -1,6 +1,17 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Dela_Gothic_One, Space_Mono } from "next/font/google";
 import { Providers } from "./providers";
+import { AppTransition } from "@/components/app-transition";
+import { JsonLd } from "@/components/json-ld";
+import {
+  siteUrl,
+  siteName,
+  defaultTitle,
+  defaultDescription,
+  defaultKeywords,
+  locale,
+  ogImagePath,
+} from "@/lib/seo";
 import "./globals.css";
 
 const delaGothic = Dela_Gothic_One({
@@ -15,9 +26,42 @@ const spaceMono = Space_Mono({
   subsets: ["latin"],
 });
 
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#0038a8",
+};
+
 export const metadata: Metadata = {
-  title: "Tabularis - Extract tables from PDF",
-  description: "Extract tables automatically. Turn fixed documents into editable data.",
+  metadataBase: new URL(siteUrl),
+  title: {
+    default: defaultTitle,
+    template: `%s | ${siteName}`,
+  },
+  description: defaultDescription,
+  keywords: defaultKeywords,
+  authors: [{ name: siteName, url: siteUrl }],
+  creator: siteName,
+  publisher: siteName,
+  formatDetection: { email: false, address: false, telephone: false },
+  openGraph: {
+    type: "website",
+    locale,
+    url: siteUrl,
+    siteName,
+    title: defaultTitle,
+    description: defaultDescription,
+    images: ogImagePath ? [{ url: ogImagePath, width: 1200, height: 630, alt: siteName }] : [],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: defaultTitle,
+    description: defaultDescription,
+    images: ogImagePath ? [ogImagePath] : [],
+  },
+  robots: { index: true, follow: true, googleBot: { index: true, follow: true } },
+  alternates: { canonical: siteUrl },
+  category: "technology",
 };
 
 export default function RootLayout({
@@ -30,7 +74,10 @@ export default function RootLayout({
       <body
         className={`${delaGothic.variable} ${spaceMono.variable} bg-paper font-mono antialiased`}
       >
-        <Providers>{children}</Providers>
+        <JsonLd />
+        <Providers>
+          <AppTransition>{children}</AppTransition>
+        </Providers>
       </body>
     </html>
   );

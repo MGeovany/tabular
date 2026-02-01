@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/language-context";
 import { useAuth } from "@/contexts/auth-context";
 import { UploadZone } from "@/components/upload-zone";
@@ -12,6 +12,13 @@ export default function ConvertPage() {
   const { accessToken } = useAuth();
   const [files, setFiles] = useState<ConversionItem[]>([]);
   const [loading, setLoading] = useState(true);
+
+  const refreshHistory = useCallback(() => {
+    if (!accessToken) return;
+    fetchHistory(accessToken)
+      .then(setFiles)
+      .catch(() => setFiles([]));
+  }, [accessToken]);
 
   useEffect(() => {
     if (!accessToken) return;
@@ -37,7 +44,7 @@ export default function ConvertPage() {
 
   return (
     <>
-      <UploadZone />
+      <UploadZone onConvertSuccess={refreshHistory} />
       <ConversionList files={displayFiles} loading={displayLoading} t={t} />
     </>
   );

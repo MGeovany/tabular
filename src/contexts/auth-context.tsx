@@ -91,11 +91,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const signInWithMicrosoft = useCallback(async () => {
     setState((s) => ({ ...s, error: null }));
-    const origin = typeof window !== "undefined" ? window.location.origin : "";
+    const baseUrl =
+      process.env.NEXT_PUBLIC_APP_URL ||
+      (typeof window !== "undefined" ? window.location.origin : "");
     const { error } = await supabase.auth.signInWithOAuth({
       provider: "azure",
       options: {
-        redirectTo: `${origin}/dashboard`,
+        redirectTo: `${baseUrl}/dashboard`,
         scopes: "email openid profile",
       },
     });

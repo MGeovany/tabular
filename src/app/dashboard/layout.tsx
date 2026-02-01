@@ -4,9 +4,11 @@ import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { Header } from "@/components/header";
 import { Sidebar } from "@/components/sidebar";
+import { PageTransition } from "@/components/page-transition";
 import { useAuth } from "@/contexts/auth-context";
+import { NavigationProvider } from "@/contexts/navigation-context";
 
-export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+function DashboardLayoutInner({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const { user, loading } = useAuth();
 
@@ -20,7 +22,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
   if (loading || !user) {
     return (
       <div className="bg-paper flex min-h-screen items-center justify-center font-mono">
-        <p className="text-sm font-bold uppercase">Loading...</p>
+        <p className="text-ink text-sm font-bold uppercase">Loading...</p>
       </div>
     );
   }
@@ -31,9 +33,17 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
         <Header />
         <Sidebar />
         <main className="relative flex flex-col gap-[var(--space-md)] overflow-y-auto p-[var(--space-md)]">
-          {children}
+          <PageTransition>{children}</PageTransition>
         </main>
       </div>
     </div>
+  );
+}
+
+export default function DashboardLayout({ children }: { children: React.ReactNode }) {
+  return (
+    <NavigationProvider>
+      <DashboardLayoutInner>{children}</DashboardLayoutInner>
+    </NavigationProvider>
   );
 }

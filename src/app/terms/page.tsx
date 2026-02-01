@@ -1,13 +1,10 @@
-import Link from "next/link";
+"use client";
 
-export const metadata = {
-  title: "Terms of Service - Tabularis",
-  description: "Terms of Service for Tabularis.",
-};
+import Link from "next/link";
 
 export default function TermsPage() {
   return (
-    <div className="bg-paper text-ink my-8 min-h-screen font-mono">
+    <div className="bg-paper text-ink min-h-screen font-mono">
       <div className="border-ink mx-auto flex min-h-screen max-w-[720px] flex-col border-[3px]">
         <header className="border-ink flex h-14 items-center border-b-[3px] px-6">
           <Link

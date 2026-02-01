@@ -39,9 +39,6 @@ export function Header() {
         href="/dashboard"
         className="font-dela flex items-center gap-3 text-2xl tracking-tight uppercase"
       >
-        <div className="border-ink bg-ink relative h-8 w-8 rounded-full border-[3px]">
-          <div className="bg-paper absolute top-1/2 left-1/2 h-3 w-3 -translate-x-1/2 -translate-y-1/2 rounded-full" />
-        </div>
         <span>Tabularis</span>
       </Link>
       <div className="flex items-center gap-[var(--space-md)] text-sm font-bold tracking-wider uppercase">

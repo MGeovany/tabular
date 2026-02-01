@@ -13,12 +13,17 @@ export const translations = {
     sidebar: {
       plan: "PLAN",
       free: "FREE",
+      freeTrial: "Free (10 files)",
     },
     upload: {
       title: "Drag your PDF",
       subtitle1: "Extract tables automatically.",
       subtitle2: "Turn fixed documents into editable data.",
       selectFile: "SELECT FILE",
+      converting: "Converting…",
+      onlyPdf: "Only PDF files are accepted.",
+      signInRequired: "Sign in to convert.",
+      convertError: "Conversion failed. Try another PDF.",
     },
     files: {
       recentFiles: "Recent Files",
@@ -73,12 +78,17 @@ export const translations = {
     sidebar: {
       plan: "PLAN",
       free: "GRATUITO",
+      freeTrial: "Gratis (10 archivos)",
     },
     upload: {
       title: "Arrastra tu PDF",
       subtitle1: "Extrae tablas automáticamente.",
       subtitle2: "Transforma documentos fijos en datos editables.",
       selectFile: "SELECCIONAR ARCHIVO",
+      converting: "Convirtiendo…",
+      onlyPdf: "Solo se aceptan archivos PDF.",
+      signInRequired: "Inicia sesión para convertir.",
+      convertError: "Error al convertir. Prueba con otro PDF.",
     },
     files: {
       recentFiles: "Archivos Recientes",
