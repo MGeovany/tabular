@@ -25,6 +25,7 @@ export type ConversionItem = {
   created_at: string;
   status: string;
   file_size_bytes?: number;
+  size_bytes?: number;
 };
 
 function client(accessToken: string) {
@@ -45,7 +46,24 @@ export async function fetchHistory(accessToken: string): Promise<ConversionItem[
   const { data } = await client(accessToken).get<ConversionItem[] | { items: ConversionItem[] }>(
     "/api/v1/history",
   );
-  return Array.isArray(data) ? data : (data.items ?? []);
+  const items = Array.isArray(data) ? data : (data.items ?? []);
+  // Normalize server shape (tabularis-server uses `size_bytes`).
+  return items.map((it) => ({
+    ...it,
+    file_size_bytes: it.file_size_bytes ?? (it as unknown as { size_bytes?: number }).size_bytes,
+  }));
+}
+
+export async function deleteConversion(
+  accessToken: string,
+  conversionId: string,
+): Promise<void> {
+  await client(accessToken).delete(`/api/v1/history/${conversionId}`);
+}
+
+export async function deleteAllConversions(accessToken: string): Promise<{ deleted: number }> {
+  const { data } = await client(accessToken).delete<{ deleted: number }>("/api/v1/history");
+  return data;
 }
 
 const PDF_TYPE = "application/pdf";
@@ -67,5 +85,20 @@ export async function convertPdfToExcel(accessToken: string, file: File): Promis
   const filename =
     (typeof disposition === "string" && /filename="?([^";\n]+)"?/i.exec(disposition)?.[1]) ||
     file.name.replace(/\.pdf$/i, "") + ".xlsx";
+  return { blob, filename };
+}
+
+export async function downloadConversionXlsx(
+  accessToken: string,
+  conversionId: string,
+): Promise<ConvertResult> {
+  const res = await client(accessToken).get(`/api/v1/convert/${conversionId}/download`, {
+    responseType: "blob",
+  });
+  const blob = res.data as Blob;
+  const disposition = res.headers["content-disposition"];
+  const filename =
+    (typeof disposition === "string" && /filename="?([^";\n]+)"?/i.exec(disposition)?.[1]) ||
+    `conversion-${conversionId}.xlsx`;
   return { blob, filename };
 }

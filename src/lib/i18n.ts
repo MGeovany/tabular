@@ -2,6 +2,16 @@ export type Locale = "en" | "es";
 
 export const translations = {
   en: {
+    common: {
+      confirm: "Confirm",
+    },
+    toast: {
+      downloadStarted: "Download started",
+      downloadFailed: "Download failed",
+      downloadExpired: "Download expired. Convert again.",
+      deleted: "Deleted",
+      deletedAll: "All conversions deleted",
+    },
     header: {
       account: "Account",
     },
@@ -63,10 +73,25 @@ export const translations = {
     },
     history: {
       title: "History",
+      subtitle: "All your PDF to Excel conversions.",
       comingSoon: "History view coming soon.",
+      delete: "Delete",
+      deleteAll: "Delete all",
+      deleteConfirm: "Delete this conversion?",
+      deleteAllConfirm: "Delete all conversions? This cannot be undone.",
     },
   },
   es: {
+    common: {
+      confirm: "Confirmar",
+    },
+    toast: {
+      downloadStarted: "Descarga iniciada",
+      downloadFailed: "No se pudo descargar",
+      downloadExpired: "La descarga expiró. Convierte de nuevo.",
+      deleted: "Eliminado",
+      deletedAll: "Se eliminaron todas las conversiones",
+    },
     header: {
       account: "Cuenta",
     },
@@ -128,7 +153,12 @@ export const translations = {
     },
     history: {
       title: "Historial",
+      subtitle: "Todas tus conversiones de PDF a Excel.",
       comingSoon: "Vista de historial próximamente.",
+      delete: "Eliminar",
+      deleteAll: "Eliminar todo",
+      deleteConfirm: "¿Eliminar esta conversión?",
+      deleteAllConfirm: "¿Eliminar todas las conversiones? No se puede deshacer.",
     },
   },
 } as const;
