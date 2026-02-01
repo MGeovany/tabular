@@ -38,13 +38,13 @@ function confirmToast(
 ): Promise<boolean> {
   return new Promise((resolve) => {
     let settled = false;
-    let toastId: string | number | undefined;
+    let toastId: string | number = -1;
 
     const settle = (value: boolean) => {
       if (settled) return;
       settled = true;
       resolve(value);
-      if (toastId !== undefined) toast.dismiss(toastId);
+      toast.dismiss(toastId);
     };
 
     toastId = toast(message, {
@@ -119,6 +119,7 @@ export function ConversionList({ files, loading, t, title, onDeleteAll }: Conver
   return (
     <section className="flex flex-1 flex-col gap-(--space-sm)">
       <div className="border-ink mb-(--space-sm) flex flex-wrap items-end justify-between gap-2 border-b-[3px] pb-(--space-xs)">
+        <h2 className="font-dela text-lg uppercase">{title ?? t("files.recentFiles")}</h2>
         <div className="flex items-center gap-3">
           <span className="text-sm font-bold">
             {t("files.total")}: {loading ? "…" : files.length}

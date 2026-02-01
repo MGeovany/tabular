@@ -27,7 +27,7 @@ export function Sidebar() {
   const progressPct = limit > 0 ? Math.min(100, (used / limit) * 100) : 0;
 
   return (
-    <aside className="border-ink bg-paper flex flex-col gap-[var(--space-lg)] border-r-[3px] p-[var(--space-md)]">
+    <aside className="border-ink bg-paper flex h-full flex-col gap-[var(--space-lg)] border-r-[3px] p-[var(--space-md)]">
       <nav>
         <ul className="flex list-none flex-col gap-0">
           {navItemIds.map((item) => (

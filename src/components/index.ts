@@ -8,3 +8,4 @@ export { Sidebar } from "./sidebar";
 export { StatusBadge } from "./status-badge";
 export { UploadZone } from "./upload-zone";
 export * from "./landing";
+export * from "./pricing";

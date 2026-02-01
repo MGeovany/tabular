@@ -15,7 +15,7 @@ export function NavigationProvider({ children }: { children: ReactNode }) {
   const pathname = usePathname();
 
   useEffect(() => {
-    setNavigatingToHref(null);
+    queueMicrotask(() => setNavigatingToHref(null));
   }, [pathname]);
 
   const setNavigatingToStable = useCallback((href: string | null) => {

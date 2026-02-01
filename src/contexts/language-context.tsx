@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
 import { getNested } from "@/lib/i18n";
 import type { Locale } from "@/lib/i18n";
 import { translations } from "@/lib/i18n";
@@ -16,14 +16,14 @@ const LanguageContext = createContext<LanguageContextValue | null>(null);
 const STORAGE_KEY = "tabular-locale";
 
 export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Locale>("en");
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "es" || stored === "en") {
-      setLanguageState(stored);
+  const [language, setLanguageState] = useState<Locale>(() => {
+    try {
+      const stored = typeof window !== "undefined" ? localStorage.getItem(STORAGE_KEY) : null;
+      return stored === "es" || stored === "en" ? stored : "en";
+    } catch {
+      return "en";
     }
-  }, []);
+  });
 
   const setLanguage = useCallback((locale: Locale) => {
     setLanguageState(locale);

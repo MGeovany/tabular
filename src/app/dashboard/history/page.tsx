@@ -21,8 +21,10 @@ export default function HistoryPage() {
 
   useEffect(() => {
     if (!accessToken) {
-      setFiles([]);
-      setLoading(false);
+      queueMicrotask(() => {
+        setFiles([]);
+        setLoading(false);
+      });
       return;
     }
     let cancelled = false;
