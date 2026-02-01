@@ -5,8 +5,12 @@
 import axios from "axios";
 
 // Default to same-origin and rely on Next.js `rewrites()` to proxy `/api/*` to tabularis-server.
-// If you want to call the backend directly from the browser, set NEXT_PUBLIC_API_URL.
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || "";
+// Direct browser calls to the backend often fail in production due to CORS.
+// If you really need direct calls, set:
+// - NEXT_PUBLIC_USE_DIRECT_API=true
+// - NEXT_PUBLIC_API_URL=https://your-backend
+const USE_DIRECT = process.env.NEXT_PUBLIC_USE_DIRECT_API === "true";
+const API_BASE = USE_DIRECT ? process.env.NEXT_PUBLIC_API_URL || "" : "";
 
 export type UserMe = {
   id: string;
@@ -54,10 +58,7 @@ export async function fetchHistory(accessToken: string): Promise<ConversionItem[
   }));
 }
 
-export async function deleteConversion(
-  accessToken: string,
-  conversionId: string,
-): Promise<void> {
+export async function deleteConversion(accessToken: string, conversionId: string): Promise<void> {
   await client(accessToken).delete(`/api/v1/history/${conversionId}`);
 }
 

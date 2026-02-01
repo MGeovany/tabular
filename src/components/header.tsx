@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 import { useAuth } from "@/contexts/auth-context";
@@ -39,6 +40,13 @@ export function Header() {
         href="/dashboard"
         className="font-dela flex items-center gap-3 text-2xl tracking-tight uppercase"
       >
+        <Image
+          src="/tabularis-logo.png"
+          alt=""
+          width={36}
+          height={36}
+          className="h-9 w-9 object-contain"
+        />
         <span>Tabularis</span>
       </Link>
       <div className="flex items-center gap-[var(--space-md)] text-sm font-bold tracking-wider uppercase">

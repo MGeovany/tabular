@@ -16,9 +16,10 @@ export function FileRow({ id, name, date, size, status, isHeader = false, action
   const [isHovered, setIsHovered] = useState(false);
   const hasActions = actions != null;
   const gridCols = hasActions
-    ? "grid-cols-[60px_2fr_1fr_1fr_100px_72px]"
-    : "grid-cols-[60px_2fr_1fr_1fr_100px]";
+    ? "grid-cols-[72px_minmax(0,2fr)_minmax(0,1fr)_minmax(0,80px)_minmax(0,100px)_72px]"
+    : "grid-cols-[72px_minmax(0,2fr)_minmax(0,1fr)_minmax(0,80px)_minmax(0,100px)]";
 
+  const cellClass = "min-w-0 overflow-hidden";
   return (
     <div
       className={`border-ink grid ${gridCols} items-center border-b-[1.5px] px-[var(--space-sm)] py-[var(--space-sm)] text-[0.9rem] transition-colors duration-200 ${
@@ -27,12 +28,25 @@ export function FileRow({ id, name, date, size, status, isHeader = false, action
       onMouseEnter={() => !isHeader && setIsHovered(true)}
       onMouseLeave={() => !isHeader && setIsHovered(false)}
     >
-      <span className={`font-bold ${isHeader ? "opacity-100" : "opacity-50"}`}>{id}</span>
-      <span className="font-bold uppercase">{name}</span>
-      <span className={`text-[0.8rem] ${isHeader ? "opacity-100" : "opacity-80"}`}>{date}</span>
-      <span className={`text-[0.8rem] ${isHeader ? "opacity-100" : "opacity-80"}`}>{size}</span>
-      <span>{status}</span>
-      {hasActions && <span className="flex justify-end">{actions}</span>}
+      <span className={`${cellClass} font-bold ${isHeader ? "opacity-100" : "opacity-50"}`}>
+        {id}
+      </span>
+      <span
+        className={`${cellClass} truncate font-bold uppercase`}
+        title={!isHeader ? name : undefined}
+      >
+        {name}
+      </span>
+      <span
+        className={`${cellClass} truncate text-[0.8rem] ${isHeader ? "opacity-100" : "opacity-80"}`}
+      >
+        {date}
+      </span>
+      <span className={`${cellClass} text-[0.8rem] ${isHeader ? "opacity-100" : "opacity-80"}`}>
+        {size}
+      </span>
+      <span className={`${cellClass} flex items-center justify-end`}>{status}</span>
+      {hasActions && <span className={`${cellClass} flex justify-end`}>{actions}</span>}
     </div>
   );
 }

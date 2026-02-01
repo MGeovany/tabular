@@ -1,13 +1,9 @@
 export function formatDate(iso: string): string {
   try {
     const d = new Date(iso);
-    const now = new Date();
-    const today = now.toDateString() === d.toDateString();
-    if (today) return d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
-    const yesterday = new Date(now);
-    yesterday.setDate(yesterday.getDate() - 1);
-    if (yesterday.toDateString() === d.toDateString()) return "YESTERDAY";
-    return d.toLocaleDateString([], { month: "short", day: "numeric" }).toUpperCase();
+    const time = d.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    const datePart = d.toLocaleDateString([], { month: "short", day: "numeric" });
+    return `${datePart} ${time}`;
   } catch {
     return iso;
   }

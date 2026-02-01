@@ -4,6 +4,7 @@ export const translations = {
   en: {
     common: {
       confirm: "Confirm",
+      cancel: "Cancel",
     },
     toast: {
       downloadStarted: "Download started",
@@ -84,6 +85,7 @@ export const translations = {
   es: {
     common: {
       confirm: "Confirmar",
+      cancel: "Cancelar",
     },
     toast: {
       downloadStarted: "Descarga iniciada",

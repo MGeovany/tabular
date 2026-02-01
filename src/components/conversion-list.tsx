@@ -31,7 +31,11 @@ function triggerDownload(blob: Blob, filename: string) {
   setTimeout(() => URL.revokeObjectURL(url), 250);
 }
 
-function confirmToast(message: string, confirmLabel: string): Promise<boolean> {
+function confirmToast(
+  message: string,
+  confirmLabel: string,
+  cancelLabel: string,
+): Promise<boolean> {
   return new Promise((resolve) => {
     let settled = false;
     let toastId: string | number | undefined;
@@ -48,6 +52,10 @@ function confirmToast(message: string, confirmLabel: string): Promise<boolean> {
       action: {
         label: confirmLabel,
         onClick: () => settle(true),
+      },
+      cancel: {
+        label: cancelLabel,
+        onClick: () => settle(false),
       },
       onDismiss: () => settle(false),
     });
@@ -93,7 +101,11 @@ export function ConversionList({ files, loading, t, title, onDeleteAll }: Conver
 
   const handleDeleteAllClick = async () => {
     if (!onDeleteAll) return;
-    const ok = await confirmToast(t("history.deleteAllConfirm"), t("common.confirm"));
+    const ok = await confirmToast(
+      t("history.deleteAllConfirm"),
+      t("common.confirm"),
+      t("common.cancel"),
+    );
     if (!ok) return;
     setDeletingAll(true);
     try {
@@ -145,7 +157,7 @@ export function ConversionList({ files, loading, t, title, onDeleteAll }: Conver
           files.map((file) => (
             <FileRow
               key={file.id}
-              id={file.id}
+              id={file.id.slice(0, 8)}
               name={file.filename ?? file.original_filename ?? file.name ?? file.id}
               date={formatDate(file.created_at)}
               size={formatSize(file.file_size_bytes)}
