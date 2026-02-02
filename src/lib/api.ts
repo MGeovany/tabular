@@ -18,7 +18,17 @@ export type UserMe = {
   plan: string;
   conversions_used: number;
   conversions_limit: number;
+  reset_at: string;
   created_at: string | null;
+};
+
+export type PdfInfo = {
+  filename: string;
+  total_pages: number;
+  plan: string;
+  max_select_pages: number;
+  can_convert_all: boolean;
+  free_max_pages: number;
 };
 
 export type ConversionItem = {
@@ -75,9 +85,21 @@ export function isPdfFile(file: File): boolean {
 
 export type ConvertResult = { blob: Blob; filename: string };
 
-export async function convertPdfToExcel(accessToken: string, file: File): Promise<ConvertResult> {
+export async function inspectPdf(accessToken: string, file: File): Promise<PdfInfo> {
   const formData = new FormData();
   formData.append("file", file);
+  const { data } = await client(accessToken).post<PdfInfo>("/api/v1/convert/pdf-info", formData);
+  return data;
+}
+
+export async function convertPdfToExcel(
+  accessToken: string,
+  file: File,
+  pages?: string,
+): Promise<ConvertResult> {
+  const formData = new FormData();
+  formData.append("file", file);
+  if (pages) formData.append("pages", pages);
   const res = await client(accessToken).post("/api/v1/convert/pdf-to-excel", formData, {
     responseType: "blob",
   });
