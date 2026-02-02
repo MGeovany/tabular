@@ -1,22 +1,20 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 
 type PricingSectionProps = {
   currentPlan?: string;
   id?: string;
+  fromAddMember?: boolean;
 };
 
 function featureLines(value: string): string[] {
   return value.split("\n").filter(Boolean);
 }
 
-export function PricingSection({ currentPlan, id }: PricingSectionProps) {
+export function PricingSection({ currentPlan, id, fromAddMember = false }: PricingSectionProps) {
   const { t } = useLanguage();
-  const searchParams = useSearchParams();
-  const fromAddMember = searchParams.get("addMember") === "1";
   const plan = currentPlan?.toUpperCase();
   const features = {
     free: featureLines(t("pricing.featureFree")),

@@ -28,7 +28,7 @@ export default function HistoryPage() {
       return;
     }
     let cancelled = false;
-    setLoading(true);
+    queueMicrotask(() => setLoading(true));
     fetchHistory(accessToken)
       .then((list) => {
         if (!cancelled) setFiles(list);
@@ -63,7 +63,6 @@ export default function HistoryPage() {
         files={displayFiles}
         loading={displayLoading}
         t={t}
-        title={t("history.title")}
         onDeleteAll={handleDeleteAll}
       />
     </section>

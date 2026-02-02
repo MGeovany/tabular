@@ -14,7 +14,7 @@ type HeaderProps = {
 
 export function Header({ onMenuClick, mobileMenuOpen = false }: HeaderProps) {
   const router = useRouter();
-  const { language, setLanguage, t } = useLanguage();
+  const { language, setLanguage } = useLanguage();
   const { user, loading, signOut, apiUser } = useAuth();
 
   const toggleLanguage = () => {

@@ -92,7 +92,7 @@ export function UploadZone({ onConvertSuccess }: UploadZoneProps) {
         setConverting(false);
       }
     },
-    [accessToken, t, onConvertSuccess, limitReached, apiUser?.reset_at],
+    [accessToken, t, limitReached, apiUser?.reset_at],
   );
 
   const handleConfirmPages = useCallback(

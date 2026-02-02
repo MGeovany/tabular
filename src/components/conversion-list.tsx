@@ -15,7 +15,6 @@ type ConversionListProps = {
   files: ConversionItem[];
   loading: boolean;
   t: TFunction;
-  title?: string;
   onDeleteAll?: () => void | Promise<void>;
   /** When true, show "Recent Files" title and 7-day retention note (for convert tab) */
   showRecentFilesSection?: boolean;
@@ -85,7 +84,6 @@ export function ConversionList({
   files,
   loading,
   t,
-  title,
   onDeleteAll,
   showRecentFilesSection,
 }: ConversionListProps) {
