@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useLanguage } from "@/contexts/language-context";
 
 type PricingSectionProps = {
@@ -14,6 +15,8 @@ function featureLines(value: string): string[] {
 
 export function PricingSection({ currentPlan, id }: PricingSectionProps) {
   const { t } = useLanguage();
+  const searchParams = useSearchParams();
+  const fromAddMember = searchParams.get("addMember") === "1";
   const plan = currentPlan?.toUpperCase();
   const features = {
     free: featureLines(t("pricing.featureFree")),
@@ -23,6 +26,11 @@ export function PricingSection({ currentPlan, id }: PricingSectionProps) {
 
   return (
     <section id={id} className="px-6 py-12 md:px-10">
+      {fromAddMember && (
+        <div className="border-ink bg-ink/10 mb-6 border-[3px] p-4 text-center text-sm font-medium">
+          {t("pricing.selectEnterpriseForTeam")}
+        </div>
+      )}
       <div className="border-ink mb-6 border-b-[3px] pb-4">
         <h2 className="font-dela text-3xl font-black uppercase md:text-4xl">
           {t("pricing.title")}
@@ -209,6 +217,20 @@ export function PricingSection({ currentPlan, id }: PricingSectionProps) {
               </td>
               <td className="border-ink border-t-[1.5px] border-l-[1.5px] px-4 py-3 text-sm">
                 {t("pricing.comparison.bulkExportEnt")}
+              </td>
+            </tr>
+            <tr>
+              <td className="border-ink border-t-[1.5px] px-4 py-3 text-sm">
+                {t("pricing.comparison.teamMembers")}
+              </td>
+              <td className="border-ink border-t-[1.5px] border-l-[1.5px] px-4 py-3 text-sm">
+                {t("pricing.comparison.teamMembersFree")}
+              </td>
+              <td className="border-ink border-t-[1.5px] border-l-[1.5px] px-4 py-3 text-sm">
+                {t("pricing.comparison.teamMembersPro")}
+              </td>
+              <td className="border-ink border-t-[1.5px] border-l-[1.5px] px-4 py-3 text-sm">
+                {t("pricing.comparison.teamMembersEnt")}
               </td>
             </tr>
             <tr>

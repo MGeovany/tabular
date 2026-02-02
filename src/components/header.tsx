@@ -55,14 +55,14 @@ export function Header({ onMenuClick, mobileMenuOpen = false }: HeaderProps) {
         )}
         <Link
           href="/"
-          className="font-dela flex min-w-0 items-center gap-2 text-lg tracking-tight uppercase md:gap-3 md:text-2xl"
+          className="font-dela flex min-w-0 items-center gap-2 text-xl tracking-tight uppercase md:gap-3 md:text-3xl"
         >
           <Image
-            src="/tabularis-logo.png"
-            alt=""
+            src="/favicon.png"
+            alt="tabularis logo"
             width={40}
             height={40}
-            className="h-8 w-8 shrink-0 object-contain md:h-10 md:w-10"
+            className="h-10 w-10 shrink-0 object-contain md:h-12 md:w-12"
           />
           <span className="truncate">Tabularis</span>
         </Link>

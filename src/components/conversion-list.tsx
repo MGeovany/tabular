@@ -17,6 +17,8 @@ type ConversionListProps = {
   t: TFunction;
   title?: string;
   onDeleteAll?: () => void | Promise<void>;
+  /** When true, show "Recent Files" title and 7-day retention note (for convert tab) */
+  showRecentFilesSection?: boolean;
 };
 
 function triggerDownload(blob: Blob, filename: string) {
@@ -79,7 +81,14 @@ function renderStatus(
   return <StatusBadge>{status}</StatusBadge>;
 }
 
-export function ConversionList({ files, loading, t, title, onDeleteAll }: ConversionListProps) {
+export function ConversionList({
+  files,
+  loading,
+  t,
+  title,
+  onDeleteAll,
+  showRecentFilesSection,
+}: ConversionListProps) {
   const { accessToken } = useAuth();
   const [deletingAll, setDeletingAll] = useState(false);
 
@@ -119,22 +128,36 @@ export function ConversionList({ files, loading, t, title, onDeleteAll }: Conver
   return (
     <section className="flex flex-1 flex-col gap-(--space-sm)">
       <div className="border-ink mb-(--space-sm) flex flex-wrap items-end justify-between gap-2 border-b-[3px] pb-(--space-xs)">
-        <h2 className="font-dela text-lg uppercase">{title ?? t("files.recentFiles")}</h2>
-        <div className="flex items-center gap-3">
-          <span className="text-sm font-bold">
-            {t("files.total")}: {loading ? "…" : files.length}
-          </span>
-          {onDeleteAll && files.length > 0 && (
-            <button
-              type="button"
-              onClick={handleDeleteAllClick}
-              disabled={deletingAll || loading}
-              className="border-ink hover:bg-ink/10 text-ink rounded border-2 px-3 py-1.5 text-xs font-bold uppercase transition-colors disabled:opacity-50"
-            >
-              {deletingAll ? "…" : t("history.deleteAll")}
-            </button>
+        <div className="flex flex-col gap-0.5">
+          <div className="flex items-center gap-2 text-sm font-bold">
+            {showRecentFilesSection ? (
+              <>
+                <span>{t("files.recentFiles")}</span>
+                <span className="opacity-70">·</span>
+                <span>
+                  {t("files.total")}: {loading ? "…" : files.length}
+                </span>
+              </>
+            ) : (
+              <span>
+                {t("files.total")}: {loading ? "…" : files.length}
+              </span>
+            )}
+          </div>
+          {showRecentFilesSection && (
+            <p className="text-xs opacity-80">{t("files.recentFilesRetention")}</p>
           )}
         </div>
+        {onDeleteAll && files.length > 0 && (
+          <button
+            type="button"
+            onClick={handleDeleteAllClick}
+            disabled={deletingAll || loading}
+            className="border-ink hover:bg-ink/10 text-ink rounded border-2 px-3 py-1.5 text-xs font-bold uppercase transition-colors disabled:opacity-50"
+          >
+            {deletingAll ? "…" : t("history.deleteAll")}
+          </button>
+        )}
       </div>
 
       <div className="border-ink flex flex-col gap-0 border-y-[3px]">

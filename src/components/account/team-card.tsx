@@ -1,15 +1,11 @@
 "use client";
 
+import Link from "next/link";
 import { useLanguage } from "@/contexts/language-context";
-import { Button } from "../button";
 
 export function TeamCard() {
   const { t } = useLanguage();
   const members: { initials: string; name: string }[] = [];
-
-  const handleAddMember = () => {
-    // TODO: invite flow
-  };
 
   return (
     <div className="border-ink bg-paper flex flex-col border-[3px]">
@@ -34,7 +30,12 @@ export function TeamCard() {
             ))}
           </div>
         )}
-        <Button onClick={handleAddMember}>{t("account.team.addMember")}</Button>
+        <Link
+          href="/pricing?addMember=1"
+          className="border-ink bg-ink text-paper hover:bg-paper hover:text-ink inline-block border-2 px-8 py-4 text-center text-base font-bold uppercase transition-colors"
+        >
+          {t("account.team.addMember")}
+        </Link>
       </div>
     </div>
   );

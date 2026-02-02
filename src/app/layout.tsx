@@ -35,8 +35,8 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   icons: {
-    icon: "/tabularis-logo.png",
-    apple: "/tabularis-logo.png",
+    icon: "/favicon.png",
+    apple: "/favicon.png",
   },
   title: {
     default: defaultTitle,

@@ -26,7 +26,7 @@ export const translations = {
     sidebar: {
       plan: "PLAN",
       free: "FREE",
-      freeTrial: "Free (10 files)",
+      freeTrial: "Free",
     },
     upload: {
       title: "Drag your PDF",
@@ -40,6 +40,7 @@ export const translations = {
     },
     files: {
       recentFiles: "Recent Files",
+      recentFilesRetention: "Files are kept for 7 days.",
       total: "TOTAL",
       id: "ID",
       name: "NAME",
@@ -88,6 +89,7 @@ export const translations = {
     pricing: {
       title: "Our Plans",
       subtitle: "Scale your data extraction to your needs.",
+      selectEnterpriseForTeam: "To add team members, select the Enterprise plan.",
       free: "Free",
       pro: "PRO",
       enterprise: "Enterprise",
@@ -96,9 +98,9 @@ export const translations = {
       getStarted: "Get started",
       selectPro: "Select PRO",
       contact: "Contact",
-      featureFree: "10 files per month\nMax 5 pages per PDF\nCommunity support\nBasic XLS export",
-      featurePro: "Unlimited files\nUnlimited pages\nPriority support\nBulk conversions\nCustom templates",
-      featureEnterprise: "Everything in PRO\nUnlimited conversions\nAdvanced SSO security\n1 year data retention\nDedicated manager",
+      featureFree: "10 files per month\nMax 20 pages per PDF\nSelect which pages to export\nBasic XLS export",
+      featurePro: "Unlimited files\nUnlimited pages\nPriority support\nBulk conversions",
+      featureEnterprise: "Everything in PRO\nUnlimited conversions\nAdd team members\n1 year data retention\nDedicated manager",
       comparison: {
         feature: "Feature",
         free: "Free",
@@ -113,6 +115,10 @@ export const translations = {
         bulkExportFree: "No",
         bulkExportPro: "Yes",
         bulkExportEnt: "Full",
+        teamMembers: "Team members",
+        teamMembersFree: "No",
+        teamMembersPro: "No",
+        teamMembersEnt: "Yes",
         jsonFormat: "JSON format",
         no: "No",
         yes: "Yes",
@@ -144,7 +150,7 @@ export const translations = {
     sidebar: {
       plan: "PLAN",
       free: "GRATUITO",
-      freeTrial: "Gratis (10 archivos)",
+      freeTrial: "Gratis",
     },
     upload: {
       title: "Arrastra tu PDF",
@@ -158,6 +164,7 @@ export const translations = {
     },
     files: {
       recentFiles: "Archivos Recientes",
+      recentFilesRetention: "Los archivos se conservan 7 días.",
       total: "TOTAL",
       id: "ID",
       name: "NOMBRE",
@@ -206,6 +213,7 @@ export const translations = {
     pricing: {
       title: "Nuestros Planes",
       subtitle: "Escala tu extracción de datos según tus necesidades.",
+      selectEnterpriseForTeam: "Para añadir miembros al equipo, selecciona el plan Enterprise.",
       free: "Gratuito",
       pro: "PRO",
       enterprise: "Empresa",
@@ -214,9 +222,9 @@ export const translations = {
       getStarted: "Comenzar",
       selectPro: "Seleccionar PRO",
       contact: "Contactar",
-      featureFree: "10 archivos al mes\nMáx. 5 páginas por PDF\nSoporte por comunidad\nExportación XLS básica",
-      featurePro: "Archivos ilimitados\nPáginas ilimitadas\nSoporte prioritario\nConversiones en lote\nPlantillas personalizadas",
-      featureEnterprise: "Todo lo del plan PRO\nConversiones ilimitadas\nSeguridad avanzada SSO\nRetención de datos 1 año\nManager dedicado",
+      featureFree: "10 archivos al mes\nMáx. 20 páginas por PDF\nSeleccionar qué páginas exportar\nExportación XLS básica",
+      featurePro: "Archivos ilimitados\nPáginas ilimitadas\nSoporte prioritario\nConversiones en lote",
+      featureEnterprise: "Todo lo del plan PRO\nConversiones ilimitadas\nAñadir miembros al equipo\nRetención de datos 1 año\nManager dedicado",
       comparison: {
         feature: "Característica",
         free: "Gratis",
@@ -231,6 +239,10 @@ export const translations = {
         bulkExportFree: "No",
         bulkExportPro: "Sí",
         bulkExportEnt: "Completa",
+        teamMembers: "Miembros del equipo",
+        teamMembersFree: "No",
+        teamMembersPro: "No",
+        teamMembersEnt: "Sí",
         jsonFormat: "Formato JSON",
         no: "No",
         yes: "Sí",

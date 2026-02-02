@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function TermsPage() {
   return (
     <div className="bg-paper text-ink min-h-screen font-mono">
-      <div className="border-ink mx-auto flex min-h-screen max-w-[720px] flex-col border-[3px]">
+      <div className="border-ink mx-auto my-8 flex min-h-screen max-w-[720px] flex-col border-[3px]">
         <header className="border-ink flex h-14 items-center border-b-[3px] px-6">
           <Link
             href="/"

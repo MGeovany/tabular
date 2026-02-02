@@ -45,7 +45,7 @@ export default function ConvertPage() {
   return (
     <>
       <UploadZone onConvertSuccess={refreshHistory} />
-      <ConversionList files={displayFiles} loading={displayLoading} t={t} />
+      <ConversionList files={displayFiles} loading={displayLoading} t={t} showRecentFilesSection />
     </>
   );
 }
