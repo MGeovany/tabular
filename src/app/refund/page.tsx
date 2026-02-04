@@ -23,46 +23,38 @@ export default function RefundPolicyPage() {
 
           <div className="flex flex-col gap-8 text-sm leading-relaxed">
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">1. Overview</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">1. Refund window</h2>
               <p className="opacity-90">
-                This Refund Policy explains when refunds may be available for Tabularis paid plans.
-                Because Tabularis is a digital service, refunds are generally limited once the
-                service has been accessed or consumed.
+                You may request a full refund within <strong>14 days</strong> of the date of
+                purchase. Refund requests must be submitted within this 14-day period to be
+                eligible.
               </p>
             </section>
 
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">2. Eligibility</h2>
-              <p className="opacity-90">
-                Refunds may be considered on a case-by-case basis, including (a) accidental
-                duplicate purchases, (b) billing errors, or (c) technical issues that prevent you
-                from using the service despite reasonable support efforts. We do not guarantee
-                refunds for changes of mind.
-              </p>
-            </section>
-
-            <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">3. How to Request</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">2. How to request</h2>
               <p className="opacity-90">
                 To request a refund, email{" "}
-                <a className="underline hover:opacity-80" href="mailto:marlon.castro@thefndrs.com">
+                <a className="underline hover:opacity-80" href="mailto:support@thefndrs.com">
                   support@thefndrs.com
                 </a>{" "}
-                with your account email, the approximate purchase date, and a brief description of
-                the issue. We may ask for additional details to investigate.
+                with your account email, the date of purchase, and your order or transaction
+                reference if available. We will process eligible requests in line with this
+                policy.
               </p>
             </section>
 
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">4. Chargebacks</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">3. Chargebacks</h2>
               <p className="opacity-90">
-                If you believe a charge is unauthorized, contact us as soon as possible. Initiating
-                a chargeback may result in suspension of access while the dispute is reviewed.
+                If you believe a charge is unauthorized, contact us as soon as possible.
+                Initiating a chargeback may result in suspension of access while the dispute is
+                reviewed.
               </p>
             </section>
 
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">5. Regional Rights</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">4. Regional rights</h2>
               <p className="opacity-90">
                 If you are located in a jurisdiction that provides mandatory consumer rights (for
                 example, EU/UK withdrawal rights), those rights may apply and are not limited by
@@ -71,10 +63,10 @@ export default function RefundPolicyPage() {
             </section>
 
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">6. Changes</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">5. Changes</h2>
               <p className="opacity-90">
-                We may update this policy from time to time. We will post the revised version here
-                and update the &quot;Last updated&quot; date.
+                We may update this policy from time to time. We will post the revised version
+                here and update the &quot;Last updated&quot; date.
               </p>
             </section>
           </div>

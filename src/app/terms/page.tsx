@@ -32,18 +32,31 @@ export default function TermsPage() {
 
             <section>
               <h2 className="font-dela mb-2 text-base font-bold uppercase">
-                2. Description of Service
+                2. Service provider and legal name
               </h2>
               <p className="opacity-90">
-                Tabularis provides tools to extract tables from PDFs and export them to Excel or
-                XLSX. The Service is provided “as is.” We do not store your documents; processing is
-                done in a secure, auditable manner. The server code is open source and available for
-                review.
+                The Service is operated by <strong>Tabularis</strong>, which is the legal business
+                name of the company providing this product. Our order process is conducted by our
+                online reseller Paddle.com. Paddle.com is the Merchant of Record for all our
+                orders.
               </p>
             </section>
 
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">3. Acceptable Use</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">
+                3. Description of Service
+              </h2>
+              <p className="opacity-90">
+                Tabularis provides tools to extract tables from PDFs and export them to Excel or
+                XLSX. The Service is fully automated software; no human-driven services are involved
+                in the delivery of the product. The Service is provided “as is.” We do not store your
+                documents; processing is done in a secure, auditable manner. The server code is open
+                source and available for review.
+              </p>
+            </section>
+
+            <section>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">4. Acceptable Use</h2>
               <p className="opacity-90">
                 You must use the Service only for lawful purposes. You may not use it to process
                 content you do not have the right to use, to violate any law, or to harm others. We
@@ -52,7 +65,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">4. Account and Data</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">5. Account and Data</h2>
               <p className="opacity-90">
                 You sign in with your Microsoft account. We use the minimum data necessary to
                 provide the Service. How we handle data is described in our Privacy Policy.
@@ -61,7 +74,7 @@ export default function TermsPage() {
 
             <section>
               <h2 className="font-dela mb-2 text-base font-bold uppercase">
-                5. Limitation of Liability
+                6. Limitation of Liability
               </h2>
               <p className="opacity-90">
                 To the extent permitted by law, Tabularis and its operators are not liable for
@@ -70,7 +83,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">6. Changes</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">7. Changes</h2>
               <p className="opacity-90">
                 We may update these terms. Continued use of the Service after changes constitutes
                 acceptance. We encourage you to review this page periodically.
@@ -78,7 +91,7 @@ export default function TermsPage() {
             </section>
 
             <section>
-              <h2 className="font-dela mb-2 text-base font-bold uppercase">7. Contact</h2>
+              <h2 className="font-dela mb-2 text-base font-bold uppercase">8. Contact</h2>
               <p className="opacity-90">
                 For questions about these terms, open an issue or discussion in the{" "}
                 <a
@@ -89,7 +102,7 @@ export default function TermsPage() {
                 >
                   Tabularis server repository
                 </a>
-                . or contact us at{" "}
+                , or contact us at{" "}
                 <a className="underline hover:opacity-80" href="mailto:marlon.castro@thefndrs.com">
                   support@thefndrs.com
                 </a>
